@@ -1,4 +1,4 @@
-.PHONY: ci-install-pythons install-pyenv install test setup-pyenv-local:
+.PHONY: ci-install-pythons install-pyenv install test setup-pyenv-local
 
 install-pyenv:
 	curl https://pyenv.run | PYENV_ROOT=./.pyenv bash || echo '-- pyenv already setup, skipping --\n'
