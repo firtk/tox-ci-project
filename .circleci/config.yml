@@ -12,6 +12,7 @@ jobs:
           command: |
             make setup-ubuntu
             make install-pyenv
+            export PATH="/home/circleci/project/.pyenv/bin:$PATH"
             make setup-pyenv-local
             python -m venv venv
             venv/bin/pip install -r requirements_test.txt
