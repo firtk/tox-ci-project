@@ -11,7 +11,6 @@ install-pyenv:
 	curl https://pyenv.run | PYENV_ROOT=./.pyenv bash || echo '-- pyenv already setup, skipping --\n'
 	PYENV_ROOT=./.pyenv ./.pyenv/bin/pyenv install -s 3.6.15
 	PYENV_ROOT=./.pyenv ./.pyenv/bin/pyenv install -s 3.10.4
-	exec "$$SHELL"
 
 setup-pyenv-local:
 	./.pyenv/bin/pyenv global system 3.6.15 3.10.4
