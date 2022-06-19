@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt-get update
+            make setup-ubuntu
             make install-pyenv
             make setup-pyenv-local
             python -m venv venv
