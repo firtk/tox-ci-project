@@ -16,7 +16,7 @@ jobs:
             export PATH="$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH"
             pyenv install 3.6.15
             pyenv install 3.10.3
-            pyenv global 3.6.15 3.10.4
+            pyenv global 3.6.15 3.10.3
             python -m venv venv
             venv/bin/pip install -r requirements_test.txt
 
