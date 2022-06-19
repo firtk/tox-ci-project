@@ -1,0 +1,32 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: cimg/base:stable
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get update
+            make install-pyenv
+            make setup-pyenv-local
+            python -m venv venv
+            venv/bin/pip install -r requirements_test.txt
+
+      - run:
+          name: Run Tests
+          command: |
+            make test
+
+workflows:
+  version: 2.1
+  common-build:
+    # will run for every command AND for every tag that fits the regex
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /v\d+.\d+.\d+/
