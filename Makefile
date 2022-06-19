@@ -14,7 +14,7 @@ install-pyenv:
 	exec $SHELL
 
 setup-pyenv-local:
-	pyenv local 3.6.15 3.10.4
+	./.pyenv/bin/pyenv local 3.6.15 3.10.4
 
 test:
 	tox
