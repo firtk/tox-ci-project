@@ -22,17 +22,6 @@ jobs:
             pyenv versions
             python -m venv venv
             venv/bin/pip install -r requirements_test.txt
-      
-      # - run:
-      #     name: Install Python
-      #     command: |
-      #       pyenv root
-      #       pyenv install 3.6.15
-      #       pyenv install 3.10.3
-      #       pyenv local 3.6.15 3.10.3
-      #       pyenv versions
-      #       python -m venv venv
-      #       venv/bin/pip install -r requirements_test.txt
 
       - run:
           name: Run Tests
@@ -42,7 +31,6 @@ jobs:
 workflows:
   version: 2.1
   common-build:
-    # will run for every command AND for every tag that fits the regex
     jobs:
       - test:
           filters:
