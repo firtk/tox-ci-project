@@ -7,8 +7,11 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          key: pyenv-v1-{{ checksum "/home/circleci/.pyenv/version" }}
+
       - run:
-          name: Install dependencies
+          name: Install Python Versions and Dependencies
           command: |
             # make setup-ubuntu
             # git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -18,10 +21,19 @@ jobs:
             # echo ${PYENV_ROOT}
             # source $BASH_ENV
             pyenv install 3.6.15
-            pyenv local 3.6.15 3.10.4
+            pyenv install 3.7.13
+            pyenv install 3.8.13
+            pyenv install 3.9.12
+            pyenv local 3.6.15 3.7.13 3.8.13 3.9.12 3.10.4
             pyenv versions
             python -m venv venv
             venv/bin/pip install -r requirements_test.txt
+      
+      - save_cache:
+          paths:
+            - ./venv
+            - /home/circleci/.pyenv/
+          key: pyenv-v1-{{ checksum "/home/circleci/.pyenv/version" }}
 
       - run:
           name: Run Tests

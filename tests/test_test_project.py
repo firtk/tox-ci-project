@@ -1,5 +1,3 @@
-import sys
-
 from django.test import TestCase
 
 
